@@ -3,21 +3,17 @@ function onSearch() {
     window.location.href='http://google.com/search?q=' + searchText;
 }
 
-function onClickedGoogleImg() {
-    location.href = location.href;
-}
-
-function onClickedGmail() {
-    window.location.href='https://mail.google.com';
-}
-
-function onClickedImages() {
-    window.location.href='https://images.google.com';
-}
-
 function onLucky() {
     alert('Lucky!');
 }
 
 window.onload = function () {
+    var textBox = document.getElementById("text_box");
+    textBox.onkeyup = onSearch;
+
+    var btnSearch = document.getElementById("google_search_button");
+    btnSearch.onclick = onSearch;
+
+    var btnLucky = document.getElementById("lucky_button");
+    btnLucky.onclick = onLucky;
 }
