@@ -1,12 +1,88 @@
-.myHeader{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	/* text-align: right; */
-	background-color: red;
+.Text{
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 24px;	
+
+	text-align: center;
+	line-height: 28.13px;
 }
 
+.Header{
+	margin-top:45px;
+	margin-right:37px;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;	
+
+	background-color: red;
+}
+.HeaderBox{
+	margin-left: 20px;
+
+	background-color: blue;
+}
+
+.Image{
+	margin-top:220px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+
+	background-color: green;
+}
+.ImageBox{
+	width: 272px;
+	height: 92px;
+
+	background-color: yellow;
+}
+
+.Search{
+	margin-top:54px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+
+	background-color: green;
+}
+.SearchBox{
+	width: 807px;
+	height: 50px;
+
+	border-radius: 30px;
+
+	background-color: yellow;
+}
+
+.Button{
+	margin-top:71px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+
+	background-color: green;
+}
+.ButtonBox{
+	margin-left: 58px;
+
+	border: none;
+	padding-left:15px;
+	padding-right: 15px;
+
+	width: auto;
+	height: 56px;
+
+	border-radius: 10px;
+
+	background-color: #E7E7E7;
+}
+.ButtonBox:hover{
+	border: 3px solid blue;
+}
 
 p {
 	color: #727272;
