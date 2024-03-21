@@ -9,7 +9,11 @@ function onLucky() {
 
 window.onload = function () {
     var textBox = document.getElementById("text_box");
-    textBox.onkeyup = onSearch;
+    textBox.addEventListener('keydown', function(e){
+        if(e.code == 'Enter'){
+            onSearch();
+        }
+    });
 
     var btnSearch = document.getElementById("google_search_button");
     btnSearch.onclick = onSearch;
