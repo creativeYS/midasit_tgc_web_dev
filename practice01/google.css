@@ -1,10 +1,10 @@
 .Text{
 	font-family: "Roboto";
 	font-weight: 300;
-	font-size: 24px;	
+	font-size: 	 24px;	
+	line-height: 28.13px;
 
 	text-align: center;
-	line-height: 28.13px;
 }
 
 .Header{
@@ -14,14 +14,14 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;	
-
-	background-color: red;
 }
 .HeaderBox{
 	margin-left: 20px;
-
-	background-color: blue;
 }
+.HeaderBox:hover{
+	color:blue;
+}
+
 
 .Image{
 	margin-top:220px;
@@ -29,14 +29,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;	
-
-	background-color: green;
 }
 .ImageBox{
 	width: 272px;
 	height: 92px;
-
-	background-color: yellow;
 }
 
 .Search{
@@ -45,16 +41,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;	
-
-	background-color: green;
 }
 .SearchBox{
 	width: 807px;
 	height: 50px;
 
+	border-color: #E4DFDF;
 	border-radius: 30px;
-
-	background-color: yellow;
 }
 
 .Button{
@@ -63,8 +56,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;	
-
-	background-color: green;
 }
 .ButtonBox{
 	margin-left: 58px;
@@ -79,18 +70,9 @@
 	border-radius: 10px;
 
 	background-color: #E7E7E7;
+
+	font-weight: 400;
 }
 .ButtonBox:hover{
 	border: 3px solid blue;
-}
-
-p {
-	color: #727272;
-	font-size: 12px;
-}
-a {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
 }
