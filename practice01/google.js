@@ -1,3 +1,4 @@
+
 window.onload = function()
 {
   document.getElementById('button1').onclick = on_search;
@@ -16,9 +17,10 @@ function not_yet_developed(){
 function on_search() {
   var input_val = document.getElementById("SearchBox").value;
   var search_URL = "https://www.google.com/search?q=" + input_val;
-  window.open(search_URL);
+  window.location.href=search_URL;
 
-  document.getElementById("SearchBox").value="";
+  //뒤로가기 했을 때 search box가 비어있게 하는 코드
+  document.getElementById("SearchBox").value=""; 
 }
 
 function is_enter(event) {  
