@@ -2,8 +2,37 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="google.css">
 	<script type="text/javascript" src="google.js"></script>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Google</title>
+	<!-- favicon -->
+	<link rel="icon" href="./favicon.ico">
 </head>
 <body>
+	<div id="container">
+		<div id="navbar">
+			<div id="navgmail" class="nav_link_text" onClick={onClickGmail();}>
+				Gmail
+			</div>
+			<div class="nav_link_text" onClick={onClickImage();}>
+				Images
+			</div>
+		</div>
+		<div id="logo">
+			<img src="google.png" alt="Google">
+		</div>
+		<div id="input_container">
+			<input id="input"/>
+		</div>
+		<div id="link_container">
+			<div id="links">
+				<div id="link_search" class="link_button_common" onClick={onClickSearch();}>
+					<a id="link_a_tag_text">Google Search</a>
+				</div>
+				<div id="link_lucky" class="link_button_common" onClick={onClickLucky();}>
+					<a id="link_a_tag_text">I'm Feeling Lucky</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
