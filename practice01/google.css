@@ -1,10 +1,78 @@
-p {
-	color: #727272;
-	font-size: 12px;
+.Text{
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 	 24px;	
+	line-height: 28.13px;
+
+	text-align: center;
 }
-a {
-	text-decoration: none;
+
+.Header{
+	margin-top:45px;
+	margin-right:37px;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;	
 }
-a:hover {
-	text-decoration: underline;
+.HeaderBox{
+	margin-left: 20px;
+}
+.HeaderBox:hover{
+	color:blue;
+}
+
+
+.Image{
+	margin-top:220px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+.ImageBox{
+	width: 272px;
+	height: 92px;
+}
+
+.Search{
+	margin-top:54px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+.SearchBox{
+	width: 807px;
+	height: 50px;
+
+	border-color: #E4DFDF;
+	border-radius: 30px;
+}
+
+.Button{
+	margin-top:71px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+.ButtonBox{
+	margin-left: 58px;
+
+	border: 3px solid #FFFFFF;
+	padding-left:15px;
+	padding-right: 15px;
+
+	width: auto;
+	height: 56px;
+
+	border-radius: 10px;
+
+	background-color: #E7E7E7;
+
+	font-weight: 400;
+}
+.ButtonBox:hover{
+	border: 3px solid blue;
 }
