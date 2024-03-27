@@ -1,9 +1,33 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="google.css">
-	<script type="text/javascript" src="google.js"></script>
+	<script type="text/javascript" src="google.js" defer></script>
+	<script src="https://kit.fontawesome.com/51db22a717.js" defer crossorigin="anonymous"></script>
 	<title>Google</title>
 </head>
 <body>
+	<header class="top-header">
+        <nav class="top-nav">
+            <ul>
+                <li><a href="https://google.com/gmail">Gmail</a></li>
+                <li><a href="https://www.google.com/imghp?hl=ko&tab=ri&ogbl">image</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-section">
+        <div class="logo-wrap">
+            <a href="https://www.google.com/"><img src="google.png"></a>
+        </div>
+        <div class="searchbar-wrap">
+            <i class="fas fa-search"></i>
+            <input class="search-input" type="text" placeholder="Google 검색 또는 URL 입력" id="SearchString" onkeypress="handleKeyPress(event);"/>
+            <i class="fas fa-keyboard"></i>
+        </div> 
+        <div class="buttons">
+            <button onclick={onSearch();}>Google 검색</button>
+			<button onclick="onClickLucky();">I'm Feeling Lucky</button>
+        </div>
+    </section>
 </body>
 </html>
