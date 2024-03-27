@@ -16,21 +16,12 @@ window.onload = function () {
             onSearch();
         }
     });
-    var searchButton = document.getElementsByClassName("search_button")[0];
+    var searchButton = document.getElementById("google_search_button");
     searchButton.addEventListener("click", function() {
         onSearch();
     });
-    var feelingButton = document.getElementsByClassName("search_button")[1];
+    var feelingButton = document.getElementById("google_feeling_button");
     feelingButton.addEventListener("click", function() {
-        onNotSupport();
-    });
-
-    var gmailButton = document.getElementsByClassName("nav_text_box")[0];
-    gmailButton.addEventListener("click", function() {
-        onNotSupport();
-    });
-    var imageButton = document.getElementsByClassName("nav_text_box")[1];
-    imageButton.addEventListener("click", function() {
         onNotSupport();
     });
 }
