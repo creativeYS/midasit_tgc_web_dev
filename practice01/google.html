@@ -1,9 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="google.css">
-	<script type="text/javascript" src="google.js"></script>
-	<title>Google</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="google.css">
+	<script src="google.js"></script>
+    <title>Google</title>
 </head>
 <body>
+    <header class="top-header">
+        <nav class="top-nav">
+            <ul>
+                <li><a href="https://google.com/gmail">Gmail</a></li>
+                <li><a href="https://www.google.com/imghp?hl=ko&tab=ri&ogbl">이미지</a></li>
+                
+				<div class="box" style="background: #BDBDBD;">
+					<a href="https://accounts.google.com/SignOutOptions?hl=ko&continue=https://www.google.com%3Fhl%3Dko&ec=GBRA8wE">
+						<img class="profile" src="chanseok.png">
+					</a>
+				</div>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-section">
+        <div class="logo-wrap">
+            <a href="https://www.google.com/"><img src="google.png"></a>
+        </div>
+        <div class="searchbar-wrap">
+            <i class="fas fa-search"></i>
+            <input class="search-input" type="text" id = "SearchString" onkeypress="handleKeyPress(event);"/>
+            <i class="fas fa-keyboard"></i>
+        </div> 
+        <div class="buttons">
+            <button onclick="onSearch();">Google 검색</button>
+            <button onclick="onClickLucky();">I'm Feeling Lucky</button>
+        </div>
+    </section>
 </body>
 </html>
