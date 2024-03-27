@@ -122,4 +122,5 @@ body {
 	&:hover {
 		cursor: pointer;
 	}
+	text-decoration: none; /* remove underline */
 }
