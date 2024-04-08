@@ -1,3 +1,17 @@
 li {
-  border: 1px solid;
+  display: flex; /* Flexbox 레이아웃 사용 */
+  align-items: center; /* 아이템을 수직 중앙 정렬 */
+  border-bottom: 1px solid white; /* 흰색 선을 아래에 추가 */
+}
+
+.completed {
+  text-decoration: line-through; /* 완료된 todo에는 취소선 추가 */
+  text-decoration-color: red; /* 취소선 색상을 빨간색으로 변경 */
+  color: gray; /* 완료된 todo의 글자 색상을 회색으로 변경 */
+  border-bottom: 1px solid white; /* 흰색 선을 아래에 추가 */
+}
+
+
+ul {
+  list-style-type: none; /* 리스트의 숫자와 ":" 제거 */
 }

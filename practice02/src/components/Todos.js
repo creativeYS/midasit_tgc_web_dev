@@ -1,29 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import './Todos.css';
 import useTodos from '../hooks/useTodos'
 
-// 새로운 컴포넌트를 정의합니다.
 function Todos() {
-
   const [counter, setCounter] = useState(1);
-  // api 호출을 통해 받아온 데이터를 todos라는 이름으로 사용합니다. (내부에서 useState, useEffect 사용됨)
-  const todos = useTodos(counter);
+  const todos = useTodos(counter); // useTodos 훅을 통해 todos 상태 가져오기
+  const completedCount = todos.filter(todo => todo.completed).length; // 완료된 항목의 수 계산
+  const incompleteCount = todos.filter(todo => !todo.completed).length; // 완료되지 않은 항목의 수 계산
 
   return (
     <div className="Todos">
-      <p onClick={()=>setCounter(counter + 1)}>
-        {counter}
+      <p onClick={() => setCounter(counter + 1)}>
+      {completedCount}/{counter}
       </p>
       <ul>
-        {
-            // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
-            // 이렇게 반복되는 요소에 key라는 프로퍼티가 빠지면 콘솔에 경고가 뜹니다.
-          todos.map((todo)=><li key={todo.id}>{todo.todo}</li>)
-        }
+        {todos.map((todo) => (
+          <li key={todo.id} className={todo.completed ? 'completed' : ''}>  
+               {todo.id} : {todo.todo}     
+          </li>
+        ))}
       </ul>
+      <p>{incompleteCount}개 남아 있음</p>
     </div>
   );
 }
 
-// 정의한 컴포넌트를 외부에서 사용할 수 있또록 export 합니다.
 export default Todos;
