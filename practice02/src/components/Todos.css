@@ -1,0 +1,72 @@
+.Todos {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.TodoHeader {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.TodoInfo {
+  display: inline-flex;
+  width: calc(100% - (32px + 5vmin));
+  color: gray;
+}
+.TodoInfo p{
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 120px;
+  
+  font-size: calc(5px + 1vmin);
+}
+#incompPlanBox {
+  padding-left: 15px;
+}
+
+.TodoControl {
+  width: calc(32px + 5vmin);
+  text-align: right;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#icon_add {
+  width: calc(16px + 2vmin);
+  height: calc(16px + 2vmin);
+}
+#icon_delete {
+  width: calc(20px + 2vmin);
+  height: calc(20px + 2vmin);
+}
+
+.TodoList {
+  width: calc(600px + 2vmin);
+}
+li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 25px;
+
+    border-top: 1px dotted ;
+    border-bottom: 1px dotted ;
+    border-color: rgb(210, 210, 210);
+    list-style-type: none;
+    font-size: calc(4px + 2vmin);
+  }
+
+#todo_incompleted {
+  color:black;
+  /* list-style: circle; */
+}
+
+#todo_completed {
+  color: gray;
+  text-decoration: line-through 1px;
+  list-style: disc;
+}
+#todo_completed::marker {
+  content: "✔ ";
+}

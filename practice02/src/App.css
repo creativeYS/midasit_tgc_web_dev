@@ -1,0 +1,74 @@
+.content-box {
+  width: initial;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.App {
+  height: initial;
+  width: fit-content;
+	display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  
+  text-align: left;
+}
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+.App-header {
+  float: left;
+  width: fit-content;
+  height: 120px;
+  
+  text-align: center;
+}
+
+.App-header #title {
+  color: rgb(82, 82, 82);
+  font-size: calc(15px + 2vmin);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App-body {
+  float: right;
+  
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  color: white;
+}
+
+#todo_list {
+  width: calc(600px + 2vmin);
+}
+/* .App-link {
+  color: #61dafb;
+} */
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+#copyright {
+  padding-top: 15px;
+  text-align: center;
+  color: rgb(186, 186, 186);
+  font-size: calc(2px + 1vmin);
+}
