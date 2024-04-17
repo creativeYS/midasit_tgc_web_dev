@@ -1,8 +1,9 @@
 import React from "react";
 import "./Todos.css";
 import useTodos from "../hooks/useTodos";
-import { FaPlusCircle, FaTrash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion"; // framer-motion 라이브러리를 임포트합니다.
+import ListState from "./Liststate.jsx"
+import ListButton from "./Listbutton.jsx";
 
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
@@ -34,66 +35,9 @@ function Todos() {
 
   return (
     <div className="Todos">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "670px",
-          marginLeft: "20px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h2 style={{ margin: 0 }}>{counter}</h2>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginLeft: 15,
-            }}
-          >
-            <h4 style={{ margin: 0, display: "flex", justifyContent: "start" }}>
-              completed : {completed}
-            </h4>
-            <h4 style={{ margin: 0, display: "flex", justifyContent: "start" }}>
-              incompleted : {incompleted}
-            </h4>
-          </div>
-        </div>
-        <div style={{ display: "flex" }}>
-          <button
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "40px",
-              height: "25px",
-              marginRight: "5px",
-            }}
-            onClick={() => setCounter(counter + 1)}
-          >
-            <FaPlusCircle />
-          </button>
-          <button
-            onClick={removeTodo}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "40px",
-              height: "25px",
-            }}
-          >
-            <FaTrash />
-          </button>
-        </div>
+      <div className="Todos_Header">
+        <ListState counter={counter} completed={completed} incompleted={incompleted} />
+        <ListButton counter={counter} setCounter={setCounter} removeTodo={removeTodo} />
       </div>
       <ul>
         <AnimatePresence>
@@ -106,15 +50,9 @@ function Todos() {
                 initial={{ opacity: 0, x: -100 }} // 초기 상태
                 animate={{ opacity: 1, x: 0 }} // 최종 상태
                 exit={{ x: 100, opacity: 0 }} // 제거될 때의 상태. 오른쪽으로 슬라이드하며 투명해집니다.
-                transition={{ duration: 0.4 }} // 애니메이션 전환 지속 시간
+                transition={{ duration: 0.3 }} // 애니메이션 전환 지속 시간
                 key={todo.id}
-                style={{
-                  margin: "5px",
-                  width: "650px",
-                  border: "none",
-                  borderBottom: "1px solid #000",
-                }}
-                id={
+                className={
                   todo.completed === true ? "line_complete" : "line_incomplete"
                 }
               >

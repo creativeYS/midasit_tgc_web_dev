@@ -1,12 +1,14 @@
 li {
-  border: 1px solid;
+  margin: 5px;
+  width: 650px;
+  border-bottom: 1px solid #000;
 }
 
-#line_complete {
+.line_complete {
   text-decoration: red line-through;
 }
 
-#line_incomplete {
+.line_incomplete {
   text-decoration: none;
 }
 
@@ -16,4 +18,13 @@ li {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+}
+
+.Todos_Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 670px;
+  margin-Left: 20px;
 }
