@@ -9,7 +9,6 @@ function useTodos(counter) {
     useEffect(()=>{
         axios.get('https://dummyjson.com/todos?limit=' + counter)
         .then(res =>  {
-          console.log(res.data.todos);
           setTodos(res.data.todos);
         });
         // deps 로 counter를 받아서 counter가 변경될때마다 useEffect가 실행됩니다.
