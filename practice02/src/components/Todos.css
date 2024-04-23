@@ -57,16 +57,16 @@ li {
     font-size: calc(4px + 2vmin);
   }
 
-#todo_incompleted {
+.TodoList .todo_incompleted {
   color:black;
   /* list-style: circle; */
 }
 
-#todo_completed {
+.TodoList .todo_completed {
   color: gray;
   text-decoration: line-through 1px;
   list-style: disc;
 }
-#todo_completed::marker {
+.TodoList .todo_completed::marker {
   content: "✔ ";
 }

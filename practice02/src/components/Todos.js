@@ -64,8 +64,8 @@ function Todos() {
           </div>
         </div>
         <div className="TodoControl">
-          <img src={iconAdd} onClick={()=>onAdd()} id="icon_add"></img>
-          <img src={iconDelete} onClick={()=>onDelete()} id="icon_delete"></img>
+          <img src={iconAdd} onClick={onAdd} id="icon_add"/>
+          <img src={iconDelete} onClick={onDelete} id="icon_delete"/>
         </div>
       </div>
       <div className="TodoList">
@@ -73,7 +73,7 @@ function Todos() {
           {
               // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
               // 이렇게 반복되는 요소에 key라는 프로퍼티가 빠지면 콘솔에 경고가 뜹니다.
-            todos.map((todo)=><li key={todo.id} id={todo.completed === true ? "todo_completed" : "todo_incompleted"} onClick={()=>onClickTodo(todo)}>
+            todos.map((todo)=><li key={todo.id} className={todo.completed === true ? "todo_completed" : "todo_incompleted"} onClick={()=>onClickTodo(todo)}>
               {todo.todo}
               </li>)
           }
