@@ -1,0 +1,17 @@
+.todo-control-add {
+    font-size: 150px;
+    display: flex;
+    position: fixed;
+    bottom: 10%;
+    right: 30%; 
+    color: green;
+}
+
+.todo-control-sub {
+    font-size: 150px;
+    display: flex;
+    position: fixed;
+    bottom: 10%;
+    left: 30%; 
+    color: red;
+}

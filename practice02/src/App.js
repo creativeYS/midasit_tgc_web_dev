@@ -1,7 +1,6 @@
 import {useState} from "react";
 import './App.css';
 
-import Todos from './components/Todos'
 import TodoTemplate from './components/TodoTemplate'
 import TodoTitle from './components/TodoTitle'
 import TodoList from './components/TodoList'
