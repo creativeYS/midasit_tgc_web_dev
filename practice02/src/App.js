@@ -16,9 +16,6 @@ function App() {
 
   return (
     <div className="App">
-      <p onClick={()=>setName("dykwak")}>
-        made by {name}
-      </p>
       <Todos/>
     </div>
   );
