@@ -11,7 +11,6 @@ function Todo({todo}) {
 
     const id = todo.id;
     const todoDesc = todo.todo;
-    //const todocompleted = todo.completed;
 
     return (
         <li key={id} className={completed ? "todoListItem done" : "todoListItem"}>
