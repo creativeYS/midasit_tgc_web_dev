@@ -1,4 +1,4 @@
-
+import './Todo.css';
 import { useState } from "react";
 
 function Todo({todo, onDelete}) {
