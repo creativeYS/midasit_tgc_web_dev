@@ -1,0 +1,35 @@
+/* Todo 항목 스타일 */
+.todoListItem {
+    list-style-type:none;
+    border-bottom: 1px solid lightgray;
+    padding-top :0.5rem; 
+    padding-bottom :0.5rem;
+    padding-left :1rem; 
+    padding-right :1rem; 
+    margin-left: 1.2rem;
+    position:relative;
+    text-align: left;
+
+    border-radius: 25px;
+    box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+    display: flex;
+    background-color: gold;
+ }
+ .done { 
+    /* text-decoration :line-through ; 
+    color :#888 ; */
+    background-color: red;  
+ } 
+ 
+ .todoListItem label { 
+    cursor:pointer;  
+ } 
+ 
+ .checkbox {  
+    position :relative;
+    margin-right: 1.2rem;
+    cursor: pointer;
+    width: 1.2rem;
+    height: 1.2rem;  
+    transform :translateY(20%) ;
+ }
