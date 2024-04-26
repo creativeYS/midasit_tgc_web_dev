@@ -1,0 +1,16 @@
+
+.todoListItem {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.done {
+    text-decoration: red line-through;
+    color: gray; 
+}
+
+.progress {
+    font-weight: bold;
+}
