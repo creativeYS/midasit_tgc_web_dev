@@ -1,0 +1,31 @@
+
+body {
+    background: linear-gradient(135deg, #3498db, #8e44ad); /* 그라데이션 색상 설정 */
+    margin: 0; /* body의 기본 마진 제거 */
+    padding: 0; /* body의 기본 패딩 제거 */
+    height: 100vh; /* 화면 전체 높이로 설정 */
+    
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    background-size: cover; /* 배경 이미지가 화면 전체를 채우도록 설정 */
+}
+
+.TodoButton {
+    background-color: #6c757d; /* 배경색 변경 */
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* 패딩 조정 */
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 6px; /* border-radius 조정 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.TodoButton:hover {
+    background-color: #0056b3;
+}
+.TodoList {
+    list-style: none; /* 항목 간의 점을 없애기 */
+    padding-left: 0; /* 각 항목 앞의 패딩을 제거하기 */
+}
