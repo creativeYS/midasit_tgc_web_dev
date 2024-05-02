@@ -1,0 +1,14 @@
+.Todo_Button_Box {
+  display: flex;
+  flex-direction: row;
+  margin-Left: 40px;
+}
+
+.Counter {
+  margin-right: 30px;
+}
+
+
+.Todo_Button {
+  margin-right: 10px;
+}
