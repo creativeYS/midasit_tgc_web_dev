@@ -1,13 +1,27 @@
 
 window.onload = function()
 {
-  document.getElementById('button1').onclick = on_search;
-  document.getElementById('button2').onclick = not_yet_developed;
+  //Jquery version
+  $("#button1").click(on_search);
+  $("#button2").click(not_yet_developed);
+  $(".HeaderBox").click(not_yet_developed);
+  
 
-  var HeaderElements =  document.querySelectorAll('.HeaderBox');
-  for (const Element of HeaderElements){
-    Element.addEventListener("click", not_yet_developed);
-  }
+  ////java script version  
+  // document.getElementById('button1').onclick = on_search;
+  // document.getElementById('button2').onclick = not_yet_developed;
+
+  // var HeaderElements =  document.querySelectorAll('.HeaderBox');
+  // for (const Element of HeaderElements){
+  //   Element.addEventListener("click", not_yet_developed);
+  // }
+
+  fetch('https://source.unsplash.com/272x92').then((res)=>{
+    console.log(res.url);
+    document.getElementById('image').src = res.url;
+    //document.getElementById('image') -> dom을 불러오는 코드
+  });
+
 };
 
 function not_yet_developed(){
