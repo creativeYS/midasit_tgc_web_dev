@@ -1,0 +1,23 @@
+.checkbox
+{
+    margin-right: 10px;
+    accent-color: #8b82e9;
+}
+
+.todoListItem_done
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    text-decoration: line-through;
+}
+
+.todoListItem
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+}

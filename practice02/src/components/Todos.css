@@ -1,0 +1,41 @@
+li
+{
+  padding: 5px;
+  margin: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo_input
+{
+  display: flex;
+  gap: 10px; /* 버튼 사이의 간격을 조절합니다. */
+}
+
+.Todos
+{
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* 부모 요소를 relative로 설정합니다. */
+}
+
+.todo_btn
+{
+  padding: 5px 5px;
+  background-color: #8b82e9;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  font-size: small
+}
+
+.todo_btn:hover
+{
+  background-color: #e6e6e6;
+	border-color: #e6e6e6;
+	cursor: pointer;
+}
