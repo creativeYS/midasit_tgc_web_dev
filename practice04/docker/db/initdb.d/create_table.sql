@@ -1,0 +1,1 @@
+CREATE TABLE db.users (name varchar(64), age INT NULL);
