@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import './Todos.css';
 import Todo from "./Todo";
 import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
@@ -7,18 +7,24 @@ import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
 function Todos() {
 
     const [newContent, setNewContent] = useState('');
-    const [todos, setTodos] = useState(getTodos());
+    const [todos, setTodos] = useState([]);
+    const [update, setUpdate] = useState(true);
+
+    useEffect(() => {
+        getTodos()
+            .then(todos => {
+                setTodos(todos);
+            });
+    }, [update]);
 
     const onClickAdd = () => {
-        const newTodo = addTodo(newContent, false);
-        setTodos([...todos, newTodo]);
-
+        addTodo(newContent, false)
+            .then(todo => setUpdate(!update));
     }
-    const onClickDelete = () => {
-        if(todos.length === 0) return;
 
-        delTodo(todos[todos.length - 1].id);
-        setTodos(todos.slice(0, todos.length - 1));
+    const deleteTodo = (id) =>{
+        delTodo(id)
+            .then(todo => setUpdate(!update));
     }
 
     const setTodo = (todo)=> {
@@ -37,12 +43,15 @@ function Todos() {
                     className="NewTodoEdit"
                 />
                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
-                <button className = "TodoButton" onClick={onClickDelete}>제거</button>
             </div>
             <div className="Todos">
                 <ul className="TodoList">
                     { // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
-                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={setTodo}/>)
+                        todos.map(todo=><Todo
+                            key={todo.id}
+                            todo={todo}
+                            setTodo={setTodo}
+                            deleteTodo={deleteTodo}/>)
                     }
                 </ul>
             </div>

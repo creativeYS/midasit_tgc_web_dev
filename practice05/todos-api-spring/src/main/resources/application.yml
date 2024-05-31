@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: ${spring.profiles.default:dev}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      default_batch_fetch_size: 100
+      format_sql: true
+    open-in-view: false
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    disable-swagger-default-url: true
+    display-request-duration: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+    doc-expansion: none
+    syntax-highlight:
+      theme: nord
+  pre-loading-enabled: true
