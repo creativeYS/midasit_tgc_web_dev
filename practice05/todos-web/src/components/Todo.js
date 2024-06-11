@@ -8,20 +8,21 @@ function Todo({todo, setTodo, deleteTodo}) {
     }
 
     return (
-            <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
+        <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
                 <div className="contentSection">
-                    <label>
-                        <input type="checkbox"
-                            className="checkbox"
-                            checked={done}
-                            onClick={() => setTodo({...todo, done: !done})}
-                        />
-                        {content}
-                    </label>
-                    <button className="TodoButtonInside" onClick={onClickDelete}>제거</button>
+            <label>
+                <input type="checkbox"
+                       className="checkbox"
+                       checked={done}
+                       onClick={()=>setTodo({...todo, done:!done})}
+                />
+                {content}
+                {description}
+            </label>
+            <button className = "TodoButtonInside" onClick={onClickDelete}>제거</button>
                 </div>
                 <div className="description">{description}</div>
-            </li>
+        </li>
     );
 }
 

@@ -23,7 +23,7 @@ function Todos() {
   
 
     const onClickAdd = () => {
-        addTodo(newContent, newContent, false)
+        addTodo(newContent, newDescript, false)
             .then(todo => setUpdate(!update));
     }
 
@@ -62,24 +62,27 @@ function Todos() {
         <div className="TodoListApp">
             <h1>TODOs</h1>
             <div className="TodoControl">
-                <input
-                    type="text"
-                    placeholder="Todo"
-                    onChange={(e) => setNewContent(e.target.value)}
-                    value={newContent}
-                    className="NewTodoEdit"
-                />
+                <div className="InputSection">
+                    <input
+                        type="text"
+                        placeholder="Todo"
+                        onChange={(e) => setNewContent(e.target.value)}
+                        value={newContent}
+                        className="NewTodoEdit"
+                    />
 
-                <input
-                    type="text"
-                    placeholder="Description"
-                    onChange={(e) => setNewDescript(e.target.value)}
-                    value={newDescript}
-                    className="NewTodoDescription"
-                />
-
-                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
-                 <button className = "TodoButton2" onClick={onClickDelAll}>전체삭제</button>
+                    <input
+                        type="text"
+                        placeholder="Description"
+                        onChange={(e) => setNewDescript(e.target.value)}
+                        value={newDescript}
+                        className="NewTodoDescription"
+                    />
+                </div>
+                <div className="ButtonSection">
+                    <button className = "TodoButton" onClick={onClickAdd}>추가</button>
+                    <button className = "TodoButton2" onClick={onClickDelAll}>전체삭제</button>
+                </div>
                  <ConfirmModal show={showModal} onConfirm={handleConfirm} onCancel={handleCancel} />                         
             </div>
             <div className="Todos">
