@@ -10,7 +10,7 @@ import { FaTrash } from "react-icons/fa";
 // 새로운 컴포넌트를 정의합니다.
 function Todos(props) {
   const { todo } = props;
-  const [counter, setCounter] = React.useState(1);
+  const [counter, setCounter] = React.useState(0);
   const [completed, setCompleted] = React.useState(0);
   const [incompleted, setIncompleted] = React.useState(0);
   const [todos, setTodos] = React.useState([]);
@@ -165,15 +165,6 @@ function Todos(props) {
           completed={completed}
           incompleted={incompleted}
         />
-        <ListButton
-          counter={counter}
-          setCounter={setCounter}
-          removeTodo={removeTodo}
-          setTodos={setTodos}
-          todoname={todoname}
-          start={start}
-          end={end}
-        />
       </div>
       <div
         style={{
@@ -188,6 +179,16 @@ function Todos(props) {
           setTodos={setTodos}
           setStart={setStart}
           setEnd={setEnd}
+          setCounter={setCounter}
+        />
+        <ListButton
+          counter={counter}
+          setCounter={setCounter}
+          removeTodo={removeTodo}
+          setTodos={setTodos}
+          todoname={todoname}
+          start={start}
+          end={end}
         />
       </div>
       <AnimatePresence>

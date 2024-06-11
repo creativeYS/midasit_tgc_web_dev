@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function TodoInput(props) {
-  const { setTodoname, setTodos, setStart, setEnd } = props;
+  const { setTodoname, setTodos, setStart, setEnd, setCounter } = props;
   const [todoname, setTodoName] = React.useState("");
   const [startTime, setStartTime] = React.useState("");
   const [endTime, setEndTime] = React.useState("");
@@ -38,6 +38,7 @@ export default function TodoInput(props) {
             },
           ];
         });
+        setCounter((prev) => prev + 1);
         setTodoName("");
         setStart("");
         setEnd("");
@@ -57,7 +58,7 @@ export default function TodoInput(props) {
   }
 
   function onChangeStartTime(e) {
-    const time = e.target.value;
+    let time = e.target.value;
     if (time < 0 || time > 24) {
       alert("시간은 0~24 사이의 숫자여야 합니다.");
       return;
@@ -92,7 +93,7 @@ export default function TodoInput(props) {
 
   return (
     <Box
-      sx={{ width: "670px", ml: 3 }}
+      sx={{ width: "670px", ml: 3, mt:2 }}
       display="flex"
       flexDirection={"row"}
       justifyContent={"space-between"}

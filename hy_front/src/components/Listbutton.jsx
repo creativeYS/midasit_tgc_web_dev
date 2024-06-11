@@ -44,7 +44,7 @@ export default function ListButton(props) {
   }
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex"}}>
       <button
         style={{
           display: "flex",
@@ -53,6 +53,8 @@ export default function ListButton(props) {
           width: "40px",
           height: "25px",
           marginRight: "5px",
+          marginTop:"30px",
+          marginLeft:"10px",
         }}
         onClick={onClickAddTodo}
       >
