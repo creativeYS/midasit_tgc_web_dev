@@ -16,13 +16,13 @@ def get_todo(db: Session, todo_id: int):
 def create_todo(db: Session, todo: DailyCommentCreate):
     db_todo = Todo(**todo.dict())
 
-    if not 0 <= db_todo.start_time <= 24:
+    if not 0 <= db_todo.start <= 24:
         return False
 
-    if not 0 <= db_todo.end_time <= 24:
+    if not 0 <= db_todo.end <= 24:
         return False
 
-    if db_todo.start_time > db_todo.end_time:
+    if db_todo.start > db_todo.end:
         return False
     
     db.add(db_todo)

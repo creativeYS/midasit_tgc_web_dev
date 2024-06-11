@@ -6,7 +6,8 @@ import ListState from "./Liststate.jsx";
 import ListButton from "./Listbutton.jsx";
 import TodoInput from "./TodoInput.jsx";
 // 새로운 컴포넌트를 정의합니다.
-function Todos() {
+function Todos(props) {
+  const { todo } = props;
   const [counter, setCounter] = React.useState(1);
   const [completed, setCompleted] = React.useState(0);
   const [incompleted, setIncompleted] = React.useState(0);
@@ -16,9 +17,13 @@ function Todos() {
   const [end, setEnd] = React.useState(-1);
 
   React.useEffect(() => {
+    const getTodos = [...todo];
+    setTodos(getTodos);
+  }, [todo]);
+
+  React.useEffect(() => {
     let completedCount = 0;
     let incompleted = 0;
-    console.log("todos", todos);
     if (counter === 0) {
       setCompleted(0);
       setIncompleted(0);

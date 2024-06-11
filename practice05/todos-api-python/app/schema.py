@@ -2,19 +2,19 @@ from pydantic import BaseModel
 
 class TodoBase(BaseModel):
     id: int
-    content: str
-    done: bool
+    todo: str
+    completed: bool
 
 class TodoCreate(BaseModel):
-    content: str
-    start_time: int
-    end_time: int
-    done : bool
+    todo: str
+    start: int
+    end: int
+    completed : bool
 
 class TodoUpdate(BaseModel):
     id: int
-    content: str
-    done : bool
+    todo: str
+    completed : bool
 
 class Todo(TodoBase):
     id: int

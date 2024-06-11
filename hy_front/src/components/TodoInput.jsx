@@ -21,6 +21,13 @@ export default function TodoInput(props) {
 				alert("할 일, 시작 시간, 끝나는 시간을 모두 입력해주세요.");
 			}
 			else {
+        const newData = {
+          todo: todoname,
+          completed: false,
+          start: startTime,
+          end: endTime,
+        }
+        fetchPostData(newData);
         setTodos((prev) => {
           return [
             ...prev,
@@ -35,6 +42,19 @@ export default function TodoInput(props) {
         });
       }
     }
+  }
+
+  async function fetchPostData(data) {
+    const res = await fetch("http://localhost:8081/todo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }
 
   function onChangeTodoName(e) {
