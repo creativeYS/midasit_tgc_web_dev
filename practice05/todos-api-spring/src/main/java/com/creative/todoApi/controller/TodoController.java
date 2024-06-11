@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import java.time.LocalDateTime;
+
 @RestController
 @AllArgsConstructor
 public class TodoController {
@@ -25,7 +27,7 @@ public class TodoController {
 
     @PostMapping("/todo")
     public void postTodos(@RequestBody TodoDto todoDto) {
-        todoService.insert(todoDto.getContent());
+        todoService.insert(todoDto.getContent(), todoDto.getEndDate());
     }
 
     @DeleteMapping("/todo/{id}")
@@ -35,8 +37,12 @@ public class TodoController {
 
     @PutMapping("/todo")
     public TodoDto putTodos(@RequestBody TodoDto todoDto) {
-        todoService.updateTodo(todoDto.getId(), Optional.ofNullable(todoDto.getContent()),
-                Optional.ofNullable(todoDto.getDone()));
+        LocalDateTime curTime = LocalDateTime.now();
+        todoService.updateTodo(
+            todoDto.getId(),
+            Optional.ofNullable(todoDto.getContent()),
+            Optional.ofNullable(todoDto.getDone()),
+            Optional.ofNullable(todoDto.getDone() ? curTime : null));
         return todoDto;
     }
 }
