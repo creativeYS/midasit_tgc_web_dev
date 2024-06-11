@@ -1,10 +1,11 @@
 import React from "react";
 import "./Todos.css";
-import useTodos from "../hooks/useTodos";
 import { motion, AnimatePresence } from "framer-motion"; // framer-motion 라이브러리를 임포트합니다.
 import ListState from "./Liststate.jsx";
 import ListButton from "./Listbutton.jsx";
 import TodoInput from "./TodoInput.jsx";
+import Checkbox from "@mui/material/Checkbox";
+
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
   const [counter, setCounter] = React.useState(1);
@@ -43,6 +44,52 @@ function Todos() {
     }
   }
 
+  function ListComponent(props) {
+    const { todo } = props;
+    const [checked, setChecked] = React.useState(todo.completed);
+
+    function handleChange() {
+      setChecked(!checked);
+      setTodos((prev) => {
+        return prev.map((item) => {
+          if (item.id === todo.id) {
+            return {
+              ...item,
+              completed: !item.completed,
+            };
+          } else {
+            return item;
+          }
+        });
+      });
+    }
+
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+          padding: "10px",
+        }}
+      >
+        <div>
+          <Checkbox
+            style={{margin:0, padding:0}}
+            checked={checked}
+            onChange={handleChange}
+            inputProps={{ "aria-label": "controlled" }}
+          />
+          {todo.todo}
+        </div>
+        <div>
+          {todo.start} 시 ~ {todo.end} 시
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="Todos">
       <div className="Todos_Header">
@@ -63,7 +110,7 @@ function Todos() {
       </div>
       <div
         style={{
-          width: "100%",
+          width: "670px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -76,40 +123,37 @@ function Todos() {
           setEnd={setEnd}
         />
       </div>
-      <ul>
-        <AnimatePresence>
-          {todos.map(
-            (
-              todo // counter 상태에 따라 todos 배열의 일부를 렌더링합니다.
-            ) => (
-              <motion.li
-                layout
-                initial={{ opacity: 0, x: -100 }} // 초기 상태
-                animate={{ opacity: 1, x: 0 }} // 최종 상태
-                exit={{ x: 100, opacity: 0 }} // 제거될 때의 상태. 오른쪽으로 슬라이드하며 투명해집니다.
-                transition={{ duration: 0.3 }} // 애니메이션 전환 지속 시간
-                key={todo.id}
-                className={
-                  todo.completed === true ? "line_complete" : "line_incomplete"
-                }
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  {todo.todo}
-                  <div>
-                    {todo.start} 시 ~ {todo.end} 시
-                  </div>
-                </div>
-              </motion.li>
-            )
-          )}
-        </AnimatePresence>
-      </ul>
+      <AnimatePresence>
+        {todos.map(
+          (
+            todo // counter 상태에 따라 todos 배열의 일부를 렌더링합니다.
+          ) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, x: -100 }} // 초기 상태
+              animate={{ opacity: 1, x: 0 }} // 최종 상태
+              exit={{ x: 100, opacity: 0 }} // 제거될 때의 상태. 오른쪽으로 슬라이드하며 투명해집니다.
+              transition={{ duration: 0.2 }} // 애니메이션 전환 지속 시간
+              key={todo.id}
+              className={
+                todo.completed === true ? "line_complete" : "line_incomplete"
+              }
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: "20px",
+                marginTop: "5px",
+                border: "1px solid #000",
+                borderRadius: "5px",
+                width: "630px",
+              }}
+            >
+              <ListComponent todo={todo} />
+            </motion.div>
+          )
+        )}
+      </AnimatePresence>
     </div>
   );
 }
