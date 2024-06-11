@@ -5,6 +5,7 @@ import ListState from "./Liststate.jsx";
 import ListButton from "./Listbutton.jsx";
 import TodoInput from "./TodoInput.jsx";
 import Checkbox from "@mui/material/Checkbox";
+import { FaTrash } from "react-icons/fa";
 
 // 새로운 컴포넌트를 정의합니다.
 function Todos(props) {
@@ -59,7 +60,7 @@ function Todos(props) {
       const data = {
         id: todo.id,
         completed: !todo.completed,
-      }
+      };
       fetchPutData(data);
       setTodos((prev) => {
         return prev.map((item) => {
@@ -87,7 +88,29 @@ function Todos(props) {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }
-  
+
+    async function fetchDeleteData(data) {
+      const res = await fetch(`http://localhost:8081/todo/${data.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    }
+
+    function onClickDelete() {
+      const data = {
+        id: todo.id,
+      };
+      fetchDeleteData(data);
+      setTodos((prev) => {
+        return prev.filter((item) => item.id !== todo.id);
+      });
+    }
 
     return (
       <div
@@ -101,15 +124,34 @@ function Todos(props) {
       >
         <div>
           <Checkbox
-            style={{margin:0, padding:0}}
+            style={{ margin: 0, padding: 0 }}
             checked={checked}
             onChange={handleChange}
             inputProps={{ "aria-label": "controlled" }}
           />
           {todo.todo}
         </div>
-        <div>
-          {todo.start} 시 ~ {todo.end} 시
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "row",
+          }}
+        >
+          {todo.start} ~ {todo.end} 시
+          <button
+            onClick={onClickDelete}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "40px",
+              height: "25px",
+              marginLeft: "10px",
+            }}
+          >
+            <FaTrash />
+          </button>
         </div>
       </div>
     );

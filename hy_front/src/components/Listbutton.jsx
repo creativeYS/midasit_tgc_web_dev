@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPlusCircle, FaTrash } from "react-icons/fa";
+import { FaPlusCircle} from "react-icons/fa";
 
 export default function ListButton(props) {
   const { counter, setCounter, removeTodo, setTodos, todoname, start, end } = props;
@@ -58,18 +58,6 @@ export default function ListButton(props) {
       >
         <FaPlusCircle />
       </button>
-      {/* <button
-        onClick={removeTodo}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "40px",
-          height: "25px",
-        }}
-      >
-        <FaTrash />
-      </button> */}
     </div>
   );
 }
