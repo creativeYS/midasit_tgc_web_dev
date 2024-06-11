@@ -42,7 +42,7 @@ h1{
   border-radius: 10px;
   background-color: #6da8ac;
 }
-.NewTodoEdit{
+.NewTodoEdit, .NewTodoDescription{
   border-radius: 10px;
   width: 300px;
   height: 30px;

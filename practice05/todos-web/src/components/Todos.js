@@ -8,6 +8,7 @@ import {getTodos, addTodo, delTodo, updateTodo, delTodoAll} from "../api/api";
 function Todos() {
 
     const [newContent, setNewContent] = useState('');
+    const [newDescript, setNewDescript] = useState('');
     const [todos, setTodos] = useState([]);
     const [update, setUpdate] = useState(true);
     const [showModal, setShowModal] = useState(false);
@@ -22,7 +23,7 @@ function Todos() {
   
 
     const onClickAdd = () => {
-        addTodo(newContent, false)
+        addTodo(newContent, newContent, false)
             .then(todo => setUpdate(!update));
     }
 
@@ -63,12 +64,23 @@ function Todos() {
             <div className="TodoControl">
                 <input
                     type="text"
+                    placeholder="Todo"
                     onChange={(e) => setNewContent(e.target.value)}
                     value={newContent}
                     className="NewTodoEdit"
                 />
-                <button className = "TodoButton" onClick={onClickAdd}>추가</button>
-                <button className = "TodoButton2" onClick={onClickDelAll}>전체삭제</button>
+
+                <input
+                    type="text"
+                    placeholder="Description"
+                    onChange={(e) => setNewDescript(e.target.value)}
+                    value={newDescript}
+                    className="NewTodoDescription"
+                />
+
+                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
+                 <button className = "TodoButton2" onClick={onClickDelAll}>전체삭제</button>
+                 <ConfirmModal show={showModal} onConfirm={handleConfirm} onCancel={handleCancel} />                         
             </div>
             <div className="Todos">
                 <ul className="TodoList">
