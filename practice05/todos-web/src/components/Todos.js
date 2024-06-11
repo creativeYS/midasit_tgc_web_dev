@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import './Todos.css';
 import Todo from "./Todo";
-import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
+import {getTodos, addTodo, delTodo, updateTodo, delTodoAll} from "../api/api";
 
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
@@ -19,6 +19,11 @@ function Todos() {
 
     const onClickAdd = () => {
         addTodo(newContent, false)
+            .then(todo => setUpdate(!update));
+    }
+
+    const onClickDelAll = () => {            
+        delTodoAll()
             .then(todo => setUpdate(!update));
     }
 
@@ -44,6 +49,7 @@ function Todos() {
                     className="NewTodoEdit"
                 />
                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
+                <button className = "TodoButton2" onClick={onClickDelAll}>전체삭제</button>
             </div>
             <div className="Todos">
                 <ul className="TodoList">

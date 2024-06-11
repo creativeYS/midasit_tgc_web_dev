@@ -48,4 +48,15 @@ const updateTodo = async ({id, content, done}) =>{
     });
 }
 
-export {getTodos, addTodo, delTodo, updateTodo};
+const delTodoAll = async () => {
+    return new Promise((resolve, reject) => {
+        axios.delete(backend + '/todo/all')
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
+}
+
+export {getTodos, addTodo, delTodo, updateTodo, delTodoAll};

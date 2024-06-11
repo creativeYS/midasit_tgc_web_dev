@@ -32,6 +32,16 @@ h1{
   border-radius: 10px;
   background-color: #6da8ac;
 }
+.TodoButton2{
+  width: 100px;
+  height: 40px;
+  font-size: 1.3em;
+  outline: 0;
+  border: none;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: #6da8ac;
+}
 .NewTodoEdit{
   border-radius: 10px;
   width: 300px;
