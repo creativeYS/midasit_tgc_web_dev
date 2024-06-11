@@ -29,8 +29,8 @@ public class TodoService {
     }
 
     @Transactional
-    public void insert(String content) {
-        Todo todo = Todo.create(content);
+    public void insert(TodoDto dto) {
+        Todo todo = Todo.create(dto);
         todoRepository.save(todo);
     }
 

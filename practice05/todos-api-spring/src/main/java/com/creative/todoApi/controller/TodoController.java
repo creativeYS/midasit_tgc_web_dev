@@ -25,7 +25,7 @@ public class TodoController {
 
     @PostMapping("/todo")
     public void postTodos(@RequestBody TodoDto todoDto) {
-        todoService.insert(todoDto.getContent());
+        todoService.insert(todoDto);
     }
 
     @DeleteMapping("/todo/{id}")
