@@ -22,7 +22,7 @@ public class TodoController {
     public List<TodoDto> getTodos() {
         return todoService.findAll();
     }
-    
+
     @PostMapping("/todo")
     public void postTodos(@RequestBody TodoDto todoDto) {
         todoService.insert(todoDto.getContent());
