@@ -2,28 +2,38 @@ import React from "react";
 import "./Todos.css";
 import useTodos from "../hooks/useTodos";
 import { motion, AnimatePresence } from "framer-motion"; // framer-motion 라이브러리를 임포트합니다.
-import ListState from "./Liststate.jsx"
+import ListState from "./Liststate.jsx";
 import ListButton from "./Listbutton.jsx";
-
+import TodoInput from "./TodoInput.jsx";
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
   const [counter, setCounter] = React.useState(1);
   const [completed, setCompleted] = React.useState(0);
   const [incompleted, setIncompleted] = React.useState(0);
-  const todos = useTodos(counter);
+  const [todos, setTodos] = React.useState([]);
+  const [todoname , setTodoname] = React.useState("");
+  const [start, setStart] = React.useState(0);
+  const [end, setEnd] = React.useState(0);
 
   React.useEffect(() => {
     let completedCount = 0;
     let incompleted = 0;
-    todos.forEach((todo) => {
-      if (todo.completed === true) {
-        completedCount++;
-      } else {
-        incompleted++;
-      }
-    });
-    setCompleted(completedCount);
-    setIncompleted(incompleted);
+    console.log("todos", todos);
+    if (counter === 0) {
+      setCompleted(0);
+      setIncompleted(0);
+      return;
+    } else {
+      todos.forEach((todo) => {
+        if (todo.completed === true) {
+          completedCount++;
+        } else {
+          incompleted++;
+        }
+      });
+      setCompleted(completedCount);
+      setIncompleted(incompleted);
+    }
   }, [todos]);
 
   function removeTodo() {
@@ -33,15 +43,31 @@ function Todos() {
     }
   }
 
+
   return (
     <div className="Todos">
       <div className="Todos_Header">
-        <ListState counter={counter} completed={completed} incompleted={incompleted} />
-        <ListButton counter={counter} setCounter={setCounter} removeTodo={removeTodo} />
+        <ListState
+          counter={counter}
+          completed={completed}
+          incompleted={incompleted}
+        />
+        <ListButton
+          counter={counter}
+          setCounter={setCounter}
+          removeTodo={removeTodo}
+          setTodos={setTodos}
+          todoname={todoname}
+          start={start}
+          end={end}
+        />
+      </div>
+      <div style={{width:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <TodoInput setTodoname={setTodoname} setTodos={setTodos} setStart={setStart} setEnd={setEnd}/>
       </div>
       <ul>
         <AnimatePresence>
-          {todos.slice(0, counter).map(
+          {todos.map(
             (
               todo // counter 상태에 따라 todos 배열의 일부를 렌더링합니다.
             ) => (
@@ -56,7 +82,9 @@ function Todos() {
                   todo.completed === true ? "line_complete" : "line_incomplete"
                 }
               >
+                <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
                 {todo.todo}
+                </div>
               </motion.li>
             )
           )}
