@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import './Todos.css';
 import Todo from "./Todo";
+import ConfirmModal from './ConfirmModal';
 import {getTodos, addTodo, delTodo, updateTodo, delTodoAll} from "../api/api";
 
 // 새로운 컴포넌트를 정의합니다.
@@ -9,6 +10,7 @@ function Todos() {
     const [newContent, setNewContent] = useState('');
     const [todos, setTodos] = useState([]);
     const [update, setUpdate] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         getTodos()
@@ -16,15 +18,21 @@ function Todos() {
                 setTodos(todos);
             });
     }, [update]);
+  
+  
 
     const onClickAdd = () => {
         addTodo(newContent, false)
             .then(todo => setUpdate(!update));
     }
 
-    const onClickDelAll = () => {            
-        delTodoAll()
-            .then(todo => setUpdate(!update));
+    const onClickDelAll = () => {    
+        setShowModal(true);
+        if (window.confirm('정말 지우시겠습니까?')) {        
+            delTodoAll()
+            .then(todo => setUpdate(!update))
+            .catch(error => console.error('Error deleting all todos:', error));
+        }
     }
 
     const deleteTodo = (id) =>{
@@ -37,6 +45,17 @@ function Todos() {
         updateTodo(todo)
             .then(todo => setUpdate(!update));
     }
+
+    const handleConfirm = () => {
+        delTodoAll()
+            .then(todo => setUpdate(!update))
+            .catch(error => console.error('Error deleting all todos:', error))
+            .finally(() => setShowModal(false));
+    };
+
+    const handleCancel = () => {
+        setShowModal(false);
+    };
 
     return (
         <div className="TodoListApp">
