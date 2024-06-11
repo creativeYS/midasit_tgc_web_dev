@@ -5,7 +5,7 @@ export default function ListButton(props) {
   const { counter, setCounter, removeTodo, setTodos, todoname, start, end } = props;
 
   function onClickAddTodo(){
-    if (todoname === "") {
+    if (todoname === "" || start > end || start === -1 || end === -1) {
       return;
     }
     setTodos((prev) => {

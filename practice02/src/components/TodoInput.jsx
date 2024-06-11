@@ -5,8 +5,8 @@ import TextField from "@mui/material/TextField";
 export default function TodoInput(props) {
   const { setTodoname, setTodos, setStart, setEnd } = props;
   const [todoname, setTodoName] = React.useState("");
-  const [startTime, setStartTime] = React.useState(0);
-  const [endTime, setEndTime] = React.useState(0);
+  const [startTime, setStartTime] = React.useState(-1);
+  const [endTime, setEndTime] = React.useState(-1);
 
   function onKeyDown(e) {;
     // 엔터키를 누르면 할 일을 추가합니다.
@@ -16,7 +16,11 @@ export default function TodoInput(props) {
 				console.log("typeof endTime", typeof endTime);
         alert("시작 시간이 끝나는 시간보다 늦습니다.");
         return;
-      } else {
+      } 
+			else if(todoname === "" | startTime === -1 | endTime === -1) {
+				alert("할 일, 시작 시간, 끝나는 시간을 모두 입력해주세요.");
+			}
+			else {
         setTodos((prev) => {
           return [
             ...prev,

@@ -11,9 +11,9 @@ function Todos() {
   const [completed, setCompleted] = React.useState(0);
   const [incompleted, setIncompleted] = React.useState(0);
   const [todos, setTodos] = React.useState([]);
-  const [todoname , setTodoname] = React.useState("");
-  const [start, setStart] = React.useState(0);
-  const [end, setEnd] = React.useState(0);
+  const [todoname, setTodoname] = React.useState("");
+  const [start, setStart] = React.useState(-1);
+  const [end, setEnd] = React.useState(-1);
 
   React.useEffect(() => {
     let completedCount = 0;
@@ -43,7 +43,6 @@ function Todos() {
     }
   }
 
-
   return (
     <div className="Todos">
       <div className="Todos_Header">
@@ -62,8 +61,20 @@ function Todos() {
           end={end}
         />
       </div>
-      <div style={{width:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-        <TodoInput setTodoname={setTodoname} setTodos={setTodos} setStart={setStart} setEnd={setEnd}/>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TodoInput
+          setTodoname={setTodoname}
+          setTodos={setTodos}
+          setStart={setStart}
+          setEnd={setEnd}
+        />
       </div>
       <ul>
         <AnimatePresence>
@@ -82,8 +93,17 @@ function Todos() {
                   todo.completed === true ? "line_complete" : "line_incomplete"
                 }
               >
-                <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-                {todo.todo}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  {todo.todo}
+                  <div>
+                    {todo.start} 시 ~ {todo.end} 시
+                  </div>
                 </div>
               </motion.li>
             )
