@@ -7,7 +7,8 @@ import TodoInput from "./TodoInput.jsx";
 import Checkbox from "@mui/material/Checkbox";
 
 // 새로운 컴포넌트를 정의합니다.
-function Todos() {
+function Todos(props) {
+  const { todo } = props;
   const [counter, setCounter] = React.useState(1);
   const [completed, setCompleted] = React.useState(0);
   const [incompleted, setIncompleted] = React.useState(0);
@@ -15,6 +16,11 @@ function Todos() {
   const [todoname, setTodoname] = React.useState("");
   const [start, setStart] = React.useState(-1);
   const [end, setEnd] = React.useState(-1);
+
+  React.useEffect(() => {
+    const getTodos = [...todo];
+    setTodos(getTodos);
+  }, [todo]);
 
   React.useEffect(() => {
     let completedCount = 0;
@@ -50,6 +56,11 @@ function Todos() {
 
     function handleChange() {
       setChecked(!checked);
+      const data = {
+        id: todo.id,
+        completed: !todo.completed,
+      }
+      fetchPutData(data);
       setTodos((prev) => {
         return prev.map((item) => {
           if (item.id === todo.id) {
@@ -63,6 +74,20 @@ function Todos() {
         });
       });
     }
+
+    async function fetchPutData(data) {
+      const res = await fetch("http://localhost:8081/todo", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    }
+  
 
     return (
       <div

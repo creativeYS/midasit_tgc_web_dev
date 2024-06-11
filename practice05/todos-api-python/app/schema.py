@@ -13,7 +13,6 @@ class TodoCreate(BaseModel):
 
 class TodoUpdate(BaseModel):
     id: int
-    todo: str
     completed : bool
 
 class Todo(TodoBase):
