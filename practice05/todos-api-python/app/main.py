@@ -34,6 +34,7 @@ async def get_todos(db: Session = Depends(get_db)):
     todos = crud.get_todos(db)
     return todos
 
+
 @app.put("/todo")
 async def update_todo(updated_todo: schema.TodoUpdate, db: Session = Depends(get_db)):
     db_todo = crud.get_todo(db, updated_todo.id)
@@ -61,19 +62,6 @@ async def get_daily_comment(date: int, db: Session = Depends(get_db)):
     if daily_comment is None:
         raise HTTPException(status_code=404, detail="Fail to find daily comment")
     return daily_comment
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @app.get("/todo/{todo_id}")
 async def get_todo(todo_id: int, db: Session = Depends(get_db)):

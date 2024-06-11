@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models import Todo
+
 from app.schema import DailyCommentCreate
 from app.schema import TodoUpdate
 
@@ -12,6 +13,7 @@ def get_todos(db: Session):
 
 def get_todo(db: Session, todo_id: int):
     return db.query(Todo).filter(Todo.id == todo_id).first()
+
 
 def create_todo(db: Session, todo: DailyCommentCreate):
     db_todo = Todo(**todo.dict())
@@ -29,6 +31,7 @@ def create_todo(db: Session, todo: DailyCommentCreate):
     db.commit()
 
     return True
+
 
 def update_todo(db: Session, todo: Todo, updated_todo: TodoUpdate):
     for key, value in updated_todo.dict().items():
@@ -51,4 +54,3 @@ def create_daily_comment(db: Session, daily_comment: DailyCommentCreate):
     db_daily_comment = TodoDailyComment(**daily_comment.dict())
     db.add(db_daily_comment)
     db.commit()
-

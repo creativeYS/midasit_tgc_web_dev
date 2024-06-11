@@ -15,13 +15,15 @@ class TodoUpdate(BaseModel):
     id: int
     completed : bool
 
+
 class Todo(TodoBase):
     id: int
 
-    class Config:
-        orm_mode = True
+class Config:
+    orm_mode = True
 
 
 class DailyCommentCreate(BaseModel):
     date:    int
     comment: str
+

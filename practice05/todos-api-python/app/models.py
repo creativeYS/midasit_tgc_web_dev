@@ -13,3 +13,4 @@ class TodoDailyComment(Base):
     __tablename__ = "TodoDailyComment"
     date = Column(Integer, primary_key=True)
     comment = Column(String(255))
+
