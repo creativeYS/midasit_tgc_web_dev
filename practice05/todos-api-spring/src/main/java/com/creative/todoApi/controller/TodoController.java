@@ -22,7 +22,7 @@ public class TodoController {
     public List<TodoDto> getTodos() {
         return todoService.findAll();
     }
-
+    
     @PostMapping("/todo")
     public void postTodos(@RequestBody TodoDto todoDto) {
         todoService.insert(todoDto.getContent());
@@ -31,6 +31,11 @@ public class TodoController {
     @DeleteMapping("/todo/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
+    }
+
+    @DeleteMapping("/todo/all")
+    public void deleteTodo() {
+        todoService.deleteTodoAll();
     }
 
     @PutMapping("/todo")

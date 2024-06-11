@@ -17,6 +17,7 @@ public class Todo {
             nullable = false
     )
     private String content;
+    private String desc;
     @Column
     private Boolean done;
 
@@ -31,6 +32,10 @@ public class Todo {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public void setDone(Boolean done) {
