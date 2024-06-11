@@ -15,8 +15,8 @@ function Todos(props) {
   const [incompleted, setIncompleted] = React.useState(0);
   const [todos, setTodos] = React.useState([]);
   const [todoname, setTodoname] = React.useState("");
-  const [start, setStart] = React.useState(-1);
-  const [end, setEnd] = React.useState(-1);
+  const [start, setStart] = React.useState("");
+  const [end, setEnd] = React.useState("");
 
   React.useEffect(() => {
     const getTodos = [...todo];

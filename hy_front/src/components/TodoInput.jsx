@@ -5,8 +5,8 @@ import TextField from "@mui/material/TextField";
 export default function TodoInput(props) {
   const { setTodoname, setTodos, setStart, setEnd } = props;
   const [todoname, setTodoName] = React.useState("");
-  const [startTime, setStartTime] = React.useState(-1);
-  const [endTime, setEndTime] = React.useState(-1);
+  const [startTime, setStartTime] = React.useState("");
+  const [endTime, setEndTime] = React.useState("");
 
   function onKeyDown(e) {;
     // 엔터키를 누르면 할 일을 추가합니다.
@@ -38,6 +38,15 @@ export default function TodoInput(props) {
             },
           ];
         });
+        setTodoName("");
+        setStart("");
+        setEnd("");
+        setStartTime("");
+        setEndTime("");
+
+        //when enter key is pressed, the TextField is focused. id="name"
+        document.getElementById("name").focus();
+
       }
     }
   }
@@ -90,25 +99,28 @@ export default function TodoInput(props) {
 			onKeyDown={onKeyDown}
     >
       <TextField
-        id="standard-basic"
+        id="name"
         label="todo"
         variant="standard"
         sx={{ width: "80%" }}
         onChange={onChangeTodoName}
+        value={todoname}
       />
       <TextField
-        id="standard-basic"
+        id="start"
         label="start"
         variant="standard"
         sx={{ width: "9%", display: "flex", justifyContent: "left" }}
         onChange={onChangeStartTime}
+        value={startTime}
       />
       <TextField
-        id="standard-basic"
+        id="end"
         label="end"
         variant="standard"
         sx={{ width: "9%", display: "flex", justifyContent: "right" }}
         onChange={onChangeEndTime}
+        value={endTime}
       />
     </Box>
   );
