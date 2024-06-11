@@ -29,8 +29,15 @@
   background-color: #6da8ac;
 }
 
-.dueDateStyle {
-  /* 원하는 스타일 추가 */
-  margin-left: 5px; /* 예시: content와 dueDate 사이에 간격 추가 */
-  color: red; /* 예시: 텍스트 색상 변경 */
+.StartDateStyle, .EndDateStyle {
+  /*display: block;*/
+  margin-left: 10px;
+}
+
+.StartDateStyle {
+  color: red;
+}
+
+.EndDateStyle {
+  color: rgb(25, 201, 157);
 }

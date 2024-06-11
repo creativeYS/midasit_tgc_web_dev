@@ -16,10 +16,12 @@ function Todo({todo, setTodo, deleteTodo}) {
                        onClick={()=>setTodo({...todo, done:!done})}
                 />
                 {content}
-                <span className="dueDateStyle">{startDate}</span>
-                <span className="dueDateStyle">{endDate}</span>
             </label>
             <button className = "TodoButtonInside" onClick={onClickDelete}>제거</button>
+            <label>
+                <span className="StartDateStyle">{startDate}</span>
+                <span className="EndDateStyle">{endDate}</span>
+            </label>
         </li>
     );
 }
