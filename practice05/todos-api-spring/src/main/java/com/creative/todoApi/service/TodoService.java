@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import java.time.LocalDateTime;
+
 @Service
 @Transactional(readOnly = true)
 @AllArgsConstructor
@@ -29,16 +31,19 @@ public class TodoService {
     }
 
     @Transactional
-    public void insert(String content) {
-        Todo todo = Todo.create(content);
+    public void insert(String content, LocalDateTime endDate) {
+        Todo todo = Todo.create(content, endDate);
         todoRepository.save(todo);
     }
 
     @Transactional
-    public void updateTodo(Long id, Optional<String> content, Optional<Boolean> done) {
+    public void updateTodo(Long id, Optional<String> content, Optional<Boolean> done,
+        Optional<LocalDateTime> endDate) 
+    {
         Todo todo = todoRepository.findById(id).orElseThrow();
         content.ifPresent(todo::setContent);
         done.ifPresent(todo::setDone);
+        endDate.ifPresent(todo::setEndDate);
     }
 
     @Transactional

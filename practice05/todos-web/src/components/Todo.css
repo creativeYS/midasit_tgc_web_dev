@@ -28,3 +28,16 @@
   border-radius: 10px;
   background-color: #6da8ac;
 }
+
+.StartDateStyle, .EndDateStyle {
+  /*display: block;*/
+  margin-left: 10px;
+}
+
+.StartDateStyle {
+  color: red;
+}
+
+.EndDateStyle {
+  color: rgb(25, 201, 157);
+}

@@ -1,8 +1,8 @@
 import './Todo.css';
 
 function Todo({todo, setTodo, deleteTodo}) {
-    const {id, content, done} = todo;
-
+    const {id, content, done, startDate, endDate} = todo;
+    
     const onClickDelete = () => {
         deleteTodo(id);
     }
@@ -18,6 +18,10 @@ function Todo({todo, setTodo, deleteTodo}) {
                 {content}
             </label>
             <button className = "TodoButtonInside" onClick={onClickDelete}>제거</button>
+            <label>
+                <span className="StartDateStyle">{startDate}</span>
+                <span className="EndDateStyle">{endDate}</span>
+            </label>
         </li>
     );
 }
