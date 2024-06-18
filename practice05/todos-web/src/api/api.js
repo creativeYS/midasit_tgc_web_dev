@@ -14,9 +14,9 @@ const getTodos = async () => {
 }
 
 
-const addTodo = async (content, done) => {
+const addTodo = async (content, description, done) => {
     return new Promise((resolve, reject) => {
-        axios.post(backend + '/todo', {content, done})
+        axios.post(backend + '/todo', {content, description, done})
             .then(res => {
                 resolve(res.data);
             }).catch(e => {
@@ -36,10 +36,10 @@ const delTodo = async (id) => {
     });
 }
 
-const updateTodo = async ({id, content, done}) =>{
+const updateTodo = async ({id, content, description, done}) =>{
     return new Promise((resolve, reject) => {
         const intDone = done ? 1 : 0;
-        axios.put(backend + '/todo', {id, content, done: intDone})
+        axios.put(backend + '/todo', {id, content, description, done: intDone})
             .then(res => {
                 resolve(res.data);
             }).catch(e => {
@@ -48,4 +48,15 @@ const updateTodo = async ({id, content, done}) =>{
     });
 }
 
-export {getTodos, addTodo, delTodo, updateTodo};
+const delTodoAll = async () => {
+    return new Promise((resolve, reject) => {
+        axios.delete(backend + '/todo/all')
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
+}
+
+export {getTodos, addTodo, delTodo, updateTodo, delTodoAll};

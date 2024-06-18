@@ -1,7 +1,7 @@
 import './Todo.css';
 
 function Todo({todo, setTodo, deleteTodo}) {
-    const {id, content, done} = todo;
+    const {id, content, description, done} = todo;
 
     const onClickDelete = () => {
         deleteTodo(id);
@@ -9,6 +9,7 @@ function Todo({todo, setTodo, deleteTodo}) {
 
     return (
         <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
+                <div className="contentSection">
             <label>
                 <input type="checkbox"
                        className="checkbox"
@@ -16,8 +17,11 @@ function Todo({todo, setTodo, deleteTodo}) {
                        onClick={()=>setTodo({...todo, done:!done})}
                 />
                 {content}
+                {description}
             </label>
             <button className = "TodoButtonInside" onClick={onClickDelete}>제거</button>
+                </div>
+                <div className="description">{description}</div>
         </li>
     );
 }

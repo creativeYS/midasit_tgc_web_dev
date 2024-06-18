@@ -25,12 +25,17 @@ public class TodoController {
 
     @PostMapping("/todo")
     public void postTodos(@RequestBody TodoDto todoDto) {
-        todoService.insert(todoDto.getContent());
+        todoService.insert(todoDto);
     }
 
     @DeleteMapping("/todo/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
+    }
+
+    @DeleteMapping("/todo/all")
+    public void deleteTodo() {
+        todoService.deleteTodoAll();
     }
 
     @PutMapping("/todo")

@@ -29,8 +29,8 @@ public class TodoService {
     }
 
     @Transactional
-    public void insert(String content) {
-        Todo todo = Todo.create(content);
+    public void insert(TodoDto dto) {
+        Todo todo = Todo.create(dto);
         todoRepository.save(todo);
     }
 
@@ -45,5 +45,10 @@ public class TodoService {
     public void deleteTodo(Long id) {
         Todo todo = todoRepository.findById(id).orElseThrow();
         todoRepository.delete(todo);
+    }
+
+    @Transactional
+    public void deleteTodoAll() {
+        todoRepository.deleteAll();
     }
 }
