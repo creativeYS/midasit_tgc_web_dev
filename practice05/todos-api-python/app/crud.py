@@ -9,6 +9,12 @@ def get_todos(db: Session):
 def get_todo(db: Session, todo_id: int):
     return db.query(Todo).filter(Todo.id == todo_id).first()
 
+def get_todo_done(db: Session, todo_done: bool):
+    return db.query(Todo).filter(Todo.done == todo_done).all()
+
+def get_todo_bookmarked(db: Session):
+    return db.query(Todo).filter(Todo.bookmark == True).all()
+
 def create_todo(db: Session, todo: TodoCreate):
     db_todo = Todo(**todo.dict())
     db.add(db_todo)

@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import './Todos.css';
 import Todo from "./Todo";
 import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
+import add from './add';
 
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
@@ -18,7 +19,7 @@ function Todos() {
     }, [update]);
 
     const onClickAdd = () => {
-        addTodo(newContent, false)
+        addTodo(newContent)
             .then(todo => setUpdate(!update));
     }
 
@@ -43,7 +44,7 @@ function Todos() {
                     value={newContent}
                     className="NewTodoEdit"
                 />
-                <button className = "TodoButton" onClick={onClickAdd}>추가</button>
+                <img className = "AddButton" src={add} onClick={onClickAdd}/>
             </div>
             <div className="Todos">
                 <ul className="TodoList">

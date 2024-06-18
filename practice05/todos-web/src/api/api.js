@@ -14,9 +14,9 @@ const getTodos = async () => {
 }
 
 
-const addTodo = async (content, done) => {
+const addTodo = async (content) => {
     return new Promise((resolve, reject) => {
-        axios.post(backend + '/todo', {content, done})
+        axios.post(backend + '/todo', {content})
             .then(res => {
                 resolve(res.data);
             }).catch(e => {
@@ -36,10 +36,10 @@ const delTodo = async (id) => {
     });
 }
 
-const updateTodo = async ({id, content, done}) =>{
+const updateTodo = async ({id, content, done, duedate, bookmark, memo}) =>{
     return new Promise((resolve, reject) => {
         const intDone = done ? 1 : 0;
-        axios.put(backend + '/todo', {id, content, done: intDone})
+        axios.put(backend + '/todo', {id, content, done: intDone, duedate, bookmark, memo})
             .then(res => {
                 resolve(res.data);
             }).catch(e => {

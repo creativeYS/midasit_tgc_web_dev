@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Query
 from app import crud, database, models, schema
 
 app = FastAPI()
@@ -41,12 +42,54 @@ async def get_todo(todo_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="todo not found")
     return todo
 
+@app.get("/todo/done/")
+async def get_todo(todo_done: bool = Query(True), db: Session = Depends(get_db)):
+    todos = crud.get_todo_done(db, todo_done)
+    if not todos:
+        raise HTTPException(status_code=404, detail="todos not found")
+    return todos
+
+@app.get("/todo/bookmark")
+async def get_todo_bookmark(db: Session = Depends(get_db)):
+    todos = crud.get_todo_bookmarked(db)
+    if not todos:
+        raise HTTPException(status_code=404, detail="todos not found")
+    return todos
+
 @app.post("/todo")
 async def create_todo(todo: schema.TodoCreate, db: Session = Depends(get_db)):
     crud.create_todo(db, todo)
 
 @app.put("/todo")
 async def update_todo(updated_todo: schema.TodoUpdate, db: Session = Depends(get_db)):
+    db_todo = crud.get_todo(db, updated_todo.id)
+    if db_todo is None:
+        raise HTTPException(status_code=404, detail="todo not found")
+    crud.update_todo(db, db_todo, updated_todo)
+
+@app.put("/todo/content")
+async def update_todo(updated_todo: schema.TodoContentUpdate, db: Session = Depends(get_db)):
+    db_todo = crud.get_todo(db, updated_todo.id)
+    if db_todo is None:
+        raise HTTPException(status_code=404, detail="todo not found")
+    crud.update_todo(db, db_todo, updated_todo)
+
+@app.put("/todo/done")
+async def update_todo(updated_todo: schema.TodoDoneUpdate, db: Session = Depends(get_db)):
+    db_todo = crud.get_todo(db, updated_todo.id)
+    if db_todo is None:
+        raise HTTPException(status_code=404, detail="todo not found")
+    crud.update_todo(db, db_todo, updated_todo)
+
+@app.put("/todo/duedate")
+async def update_todo(updated_todo: schema.TodoDuedateUpdate, db: Session = Depends(get_db)):
+    db_todo = crud.get_todo(db, updated_todo.id)
+    if db_todo is None:
+        raise HTTPException(status_code=404, detail="todo not found")
+    crud.update_todo(db, db_todo, updated_todo)
+
+@app.put("/todo/bookmark")
+async def update_todo(updated_todo: schema.TodoBookmarkUpdate, db: Session = Depends(get_db)):
     db_todo = crud.get_todo(db, updated_todo.id)
     if db_todo is None:
         raise HTTPException(status_code=404, detail="todo not found")
