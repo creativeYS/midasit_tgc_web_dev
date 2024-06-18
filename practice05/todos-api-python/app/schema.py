@@ -2,20 +2,28 @@ from pydantic import BaseModel
 
 class TodoBase(BaseModel):
     id: int
-    content: str
-    done: bool
+    todo: str
+    completed: bool
 
 class TodoCreate(BaseModel):
-    content: str
-    done : bool
+    todo: str
+    start: int
+    end: int
+    completed : bool
 
 class TodoUpdate(BaseModel):
     id: int
-    content: str
-    done : bool
+    completed : bool
+
 
 class Todo(TodoBase):
     id: int
 
-    class Config:
-        orm_mode = True
+class Config:
+    orm_mode = True
+
+
+class DailyCommentCreate(BaseModel):
+    date:    int
+    comment: str
+
